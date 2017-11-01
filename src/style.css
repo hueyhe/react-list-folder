@@ -1,0 +1,49 @@
+$bezier: cubic-bezier(.4, 0, .2, 1);
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.component-view-more {
+  overflow: hidden;
+
+  .child-list {
+    transition: height .5s $bezier;
+    overflow: hidden;
+  }
+
+  .action {
+    text-align: center;
+    line-height: 24px;
+    padding-top: 10px;
+    cursor: pointer;
+  }
+
+  .text {
+    font-size: 12px;
+    display: inline-block;
+    vertical-align: middle;
+    color: #333333;
+  }
+
+  .icon {
+    margin-left: 10px;
+    transition: transform .3s $bezier;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .icon-up {
+    transform: rotate(180deg);
+  }
+
+  .icon-down {
+    transform: rotate(0deg);
+  }
+
+  .list {
+    overflow: hidden;
+  }
+}
