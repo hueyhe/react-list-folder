@@ -39,6 +39,13 @@ class ListFolder extends Component {
     defaultFold: PropTypes.bool,
 
     /**
+     * If set to true, component would hide fold action button after unfold.
+     *
+     * @type {boolean}
+     */
+    disposable: PropTypes.bool,
+
+    /**
      * Expand & fold animation duration.
      *
      * @type {number}
@@ -70,6 +77,7 @@ class ListFolder extends Component {
   static defaultProps = {
     autoReset: true,
     defaultFold: true,
+    disposable: false,
     duration: 300,
     foldCount: 3,
     foldText: 'Fold',
@@ -263,12 +271,19 @@ class ListFolder extends Component {
   renderAction() {
     const {
       children,
+      disposable,
       foldCount,
       foldText,
       viewMoreText,
     } = this.props;
 
+    const { fold } = this.state;
+
     if (Children.count(children) <= foldCount) {
+      return null;
+    }
+
+    if (disposable && !fold) {
       return null;
     }
 
